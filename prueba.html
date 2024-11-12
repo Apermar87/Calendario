@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Personalizado</title>
+    <style>
+        /* Estilos para el calendario */
+        .calendario {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1000;
+        }
+
+        .calendario table {
+            width: 100%;
+        }
+
+        .calendario th,
+        .calendario td {
+            text-align: center;
+            padding: 5px;
+        }
+
+        .calendario th {
+            background-color: #f0f0f0;
+        }
+
+        .calendario td {
+            cursor: pointer;
+        }
+
+        .calendario .hoy {
+            background-color: #ffffcc;
+        }
+
+        .calendario .seleccionado {
+            background-color: #b3d9ff;
+        }
+
+        /* Ocultar el botón de calendario del input tipo date */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <label for="fecha">Selecciona una fecha:</label>
+    <!-- Agregar un input tipo text en lugar de date -->
+    <input type="text" id="fecha" placeholder="Fecha de recogida">
+
+    <div id="calendario" class="calendario" style="display: none;"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var inputFecha = document.getElementById("fecha");
+            var calendario = document.getElementById("calendario");
+
+            // Función para generar el calendario
+            function generarCalendario() {
+                var hoy = new Date();
+                var mes = hoy.getMonth();
+                var year = hoy.getFullYear();
+
+                var diasEnMes = new Date(year, mes + 1, 0).getDate();
+                var primerDiaSemana = new Date(year, mes, 1).getDay();
+
+                var nombreMeses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+                var html = '<table>';
+                html += '<caption>' + nombreMeses[mes] + ' ' + year + '</caption>';
+                html += '<tr>';
+                html += '<th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th>';
+                html += '</tr>';
+
+                var dia = 1;
+                for (var i = 0; i < 6; i++) {
+                    html += '<tr>';
+                    for (var j = 0; j < 7; j++) {
+                        if ((i === 0 && j < primerDiaSemana) || (dia > diasEnMes)) {
+                            html += '<td></td>';
+                        } else {
+                            var fecha = new Date(year, mes, dia);
+                            var clase = (fecha.toDateString() === hoy.toDateString()) ? ' class="hoy"' : '';
+                            html += '<td' + clase + ' data-fecha="' + fecha.toISOString().split('T')[0] + '">' + dia + '</td>';
+                            dia++;
+                        }
+                    }
+                    html += '</tr>';
+                    if (dia > diasEnMes) break;
+                }
+
+                html += '</table>';
+
+                calendario.innerHTML = html;
+
+                // Agregar evento de click a cada día del calendario
+                calendario.querySelectorAll("td").forEach(function (dia) {
+                    dia.addEventListener("click", function () {
+                        inputFecha.value = this.getAttribute("data-fecha");
+                        ocultarCalendario();
+                    });
+                });
+            }
+
+            // Mostrar calendario cuando se hace click en el input de fecha
+            inputFecha.addEventListener("click", function () {
+                if (calendario.style.display === "block") {
+                    ocultarCalendario();
+                } else {
+                    generarCalendario();
+                    calendario.style.display = "block";
+                }
+            });
+
+            // Ocultar calendario
+            function ocultarCalendario() {
+                calendario.style.display = "none";
+            }
+
+            // Cerrar el calendario si se hace click fuera de él
+            document.addEventListener("click", function (event) {
+                if (event.target !== inputFecha && event.target !== calendario) {
+                    ocultarCalendario();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

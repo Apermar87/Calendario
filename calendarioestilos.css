@@ -1,0 +1,527 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+:root {
+    --primary-color: #579EAE;
+    --text-color: #1d1d1d;
+    --bg-color: #EAEAF1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #ffffff;
+}
+
+.contenedor {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendario {
+    width: 75%;
+    max-width: 1000px;
+    background: var(--bg-color);
+    padding: 30px 20px;
+    border-radius: 5px;
+    float: left;
+}
+
+.calendario .cabecera-superior {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+}
+
+.calendario .cabecera-superior .titulo {
+    align-items: center;
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.calendario .cabecera-superior .botones .boton-hoy {
+    width: 50px;
+    height: 40px;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.calendario .cabecera-superior .botones .boton-hoy:hover {
+    background: #021927;
+    transform: scale(1.05);
+}
+
+.calendario .cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+}
+
+.calendario .cabecera .mes1,
+.calendario .cabecera .mes2 {
+    margin: auto;
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.calendario .cabecera .botones .boton {
+    width: 50px;
+    height: 40px;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.calendario .cabecera .botones .boton:hover {
+    background: #021927;
+    transform: scale(1.05);
+}
+
+.calendario .semana,
+.calendario .semana2 {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.calendario .semana .dia-semana,
+.calendario .semana2 .dia-semana {
+    width: calc(100% / 7 - 10px);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.calendario .dias,
+.calendario .dias2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.calendario .dias .dia,
+.calendario .dias2 .dia2 {
+    width: calc(100% / 7 - 10px);
+    height: 60px;
+    background: #fff;
+    background-color: #FCD5A0;
+    display: block;
+    justify-content: start;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-color);
+    transition: all 0.3s;
+    user-select: none;
+}
+
+.calendario .dias .dia:not(.fuera-de-mes):not(.reservado):hover,
+.calendario .dias2 .dia2:not(.fuera-de-mes2):not(.reservado):hover {
+    color: #fff;
+    background: #021927;
+    transform: scale(1.05);
+}
+
+.calendario .dias .fuera-de-mes,
+.calendario .dias2 .fuera-de-mes2 {
+    visibility: hidden;
+    color: #ccc;
+}
+
+.calendario .dias .dia.pasado {
+    background-color: #ffffff;
+    pointer-events: none;
+    opacity: 50%;
+}
+
+
+
+.calendario .dias .dia.hoy {
+    color: #fff;
+    background: var(--primary-color);
+}
+
+.calendario .calendarios {
+    display: flex;
+}
+
+.calendario .calendario1 {
+    width: 50%;
+    margin-right: 10px;
+}
+
+.calendario .calendario2 {
+    width: 50%;
+    margin-left: 10px;
+}
+
+.formulario {
+    width: 23%;
+    max-width: 600px;
+    background: var(--bg-color);
+    padding: 30px 20px;
+    border-radius: 5px;
+    float: right;
+}
+
+.formulario .cabecera-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+}
+
+.formulario .cabecera-superior .titulo {
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: auto;
+}
+
+.formulario .periodo {
+    display: flex;
+    flex-direction: column;
+    /* Coloca los campos uno encima del otro */
+}
+
+.formulario .campo {
+    margin-bottom: 20px;
+    /* Espaciado entre cada campo */
+}
+
+.formulario .campo label {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.formulario .campo input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+}
+
+
+.formulario .botones {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #ccc;
+}
+
+.formulario .botones .boton,
+#cancelar {
+    width: 80px;
+    height: 40px;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.formulario .simbolos {
+    align-items: start;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #ccc;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+
+.disponible,
+.no-disponible {
+    display: flex;
+    align-items: center;
+}
+
+.icono {
+    margin-right: 10px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.icono i {
+    font-size: 35px;
+    /* Tamaño del icono */
+    color: transparent;
+    /* Hacer el color del icono transparente */
+    position: absolute;
+}
+
+.disponible .icono i::before {
+    content: "\f073";
+    /* Unicode para el icono de calendario regular */
+    color: #FCD5A0;
+    /* Color del interior del icono disponible */
+    -webkit-text-stroke: 1px black;
+    /* Borde negro */
+}
+
+.no-disponible .icono i::before {
+    content: "\f273";
+    /* Unicode para el icono de calendario-times regular */
+    color: #D1C7FD;
+    /* Color del interior del icono no disponible */
+    -webkit-text-stroke: 1px black;
+    /* Borde negro */
+}
+
+.texto {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.formulario .botones .boton:hover,
+#cancelar:hover {
+    background: #021927;
+    transform: scale(1.05);
+}
+
+.calendario .dias .dia.reservado,
+.calendario .dias2 .dia2.reservado {
+    background-color: #D1C7FD;
+    /* Establece el color de fondo para los días reservados */
+    pointer-events: none;
+    opacity: 50%;
+}
+
+.calendario .dias .dia.bloqueado,
+.calendario .dias2 .dia2.bloqueado {
+    pointer-events: none;
+    opacity: 50%;
+}
+
+.precio {
+    justify-content: center;
+    text-align: center;
+    font-size: 10px;
+    align-items: center;
+    display: flex;
+    font-size: 12px;
+}
+
+.pasado .precio {
+    visibility: hidden;
+}
+
+/* Estilos para los días seleccionados del calendario */
+.dia.seleccionado,
+.dia2.seleccionado,
+.diaInput.seleccionado {
+    background-color: #021927 !important;
+    color: #fff !important;
+    transform: scale(1.05) !important;
+}
+
+/* Estilos para el calendario clonado */
+.contenedorCalendarioInput {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    position: absolute;
+    z-index: 1000;
+    width: 25%;
+}
+
+.contenedorCalendarioInput .semanaInput {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.contenedorCalendarioInput .semanaInput .dia-semanaInput {
+    width: calc(100% / 7 - 9px);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.contenedorCalendarioInput .diasInput {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.contenedorCalendarioInput .diasInput .diaInput {
+    width: calc(100% / 7 - 9px);
+    height: 25px;
+    background: #fff;
+    display: block;
+    justify-content: start;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-color);
+    transition: all 0.3s;
+    user-select: none;
+}
+
+.contenedorCalendarioInput .diasInput .diaInput:not(.fuera-de-mes):not(.reservado):hover {
+    color: #fff;
+    background: #021927;
+    transform: scale(1.05);
+}
+
+.contenedorCalendarioInput .diasInput .fuera-de-mes {
+    visibility: hidden;
+    color: #ccc;
+}
+
+.contenedorCalendarioInput .diasInput .diaInput.pasado {
+    background-color: #ffffff;
+    pointer-events: none;
+    opacity: 50%;
+}
+
+
+
+.contenedorCalendarioInput .diasInput .diaInput.hoy {
+    color: #fff;
+    background: var(--primary-color);
+}
+
+.contenedorCalendarioInput .diasInput .diaInput.reservado {
+    text-decoration: line-through;
+    pointer-events: none;
+    opacity: 50%;
+}
+
+.contenedorCalendarioInput .diasInput .diaInput.bloqueado {
+    pointer-events: none;
+    opacity: 50%;
+}
+
+.contenedorCalendarioInput .diasInput .diaInput.seleccionado {
+    background-color: #021927 !important;
+    color: #fff !important;
+    transform: scale(1.05) !important;
+}
+
+
+
+.contenedorCalendarioInput .cabeceraInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+}
+
+.contenedorCalendarioInput .cabeceraInput .mesCalendarioInput {
+    margin: auto;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.contenedorCalendarioInput .cabeceraInput .botonesCabeceraInput {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0px;
+    padding-top: 0px;
+    border-top: 0px solid;
+}
+
+.contenedorCalendarioInput .cabeceraInput .botonesCabeceraInput .botonAnteriorInput,
+.contenedorCalendarioInput .cabeceraInput .botonesCabeceraInput .botonSiguienteInput {
+    width: 35px;
+    height: 25px;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.contenedorCalendarioInput .cabeceraInput .botonesCabeceraInput .botonAnteriorInput:hover,
+.contenedorCalendarioInput .cabeceraInput .botonesCabeceraInput .botonSiguienteInput:hover {
+    background: #021927;
+    transform: scale(1.05);
+}
+
+.contenedorCalendarioInput .hoyInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding-top: 10px;
+    border-top : 2px solid #ccc;
+}
+
+.contenedorCalendarioInput .hoyInput .botonHoyInput,
+.contenedorCalendarioInput .hoyInput .botonLimpiarInput {
+    width: 75px;
+    height: 25px;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.contenedorCalendarioInput .hoyInput .botonHoyInput:hover,
+.contenedorCalendarioInput .hoyInput .botonLimpiarInput:hover {
+    background: #021927;
+    transform: scale(1.05);
+}
+
+
+
+
+
+

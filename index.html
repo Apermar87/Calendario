@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <!-- Scripts librerias CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilos.css">
+
+    <!-- Scripts librerias JS -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- <script  src="Fullcalendar/index.global.js"></script> -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+
+    <!-- Importar el archivo JavaScript -->
+    <script src="eventos.js"></script>
+
+    <style>
+        /* Estilo para cambiar el color de los números de los días del calendario */
+        .fc-daygrid-day-number {
+            color: red;
+            /* Cambia el color de los números */
+            text-decoration: none;
+        }
+
+        .fc-daygrid-event {
+            border: none;
+            /* Eliminar el borde alrededor del evento */
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- <div class="container-fluid"> se utiliza para crear un contenedor flexible que se extiende por todo el ancho del viewport o del elemento padre, adaptándose dinámicamente al tamaño de la pantalla del dispositivo. Esto es especialmente útil en el desarrollo web responsivo. -->
+    <div class="container-fluid">
+
+        <!-- Dividir en columnas -->
+        <div class="row">
+
+            <!-- Columnas Calendario -->
+            <div class="col-8 calendario-container mt-3">
+                <div id="Calendario1" class="calendario" style="border: 1px solid #000; padding: 2px"></div>
+            </div>
+
+            <!-- Columnas Eventos predefinidos -->
+            <div class="col-4 mt-3">
+                <div id="external-events"
+                    style="margin-bottom: 1em; border: 1px solid #000; overflow: auto; padding: 1em;">
+                    <h4 class="text-center">SELECCIONA UNA FECHA DE RECOGIDA Y DE ENTREGA.</h4>
+
+                    <!-- Fecha de inicio y Hora de inicio -->
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Fecha de inicio:</label>
+                            <div class="input-group">
+                                <input type="date" id="FechaInicio" value="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Hora de inicio:</label>
+                            <div class="input-group">
+                                <input type="time" id="HoraInicio" value="10:00" class="form-control"
+                                    autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fecha fin y Hora fin -->
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="FechaFin">Fecha de fin:</label>
+                            <div class="input-group">
+                                <input type="date" id="FechaFin" class="form-control" value="">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="HoraFin">Hora de fin:</label>
+                            <div class="input-group">
+                                <input type="time" id="HoraFin" value="20:00" class="form-control" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Boton Eventos Predefinidos -->
+                    <div class="text-center mt-3">
+                        <button type="button" id="BotonEventosPredefinidos" class="btn btn-success">
+                            Reservar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

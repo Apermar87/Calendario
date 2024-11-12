@@ -1,0 +1,135 @@
+<!--http://localhost/wordpress/wp-content/themes/twentytwentyfour/Calendario/calendario.html-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <!-- Importar archivos CSS -->
+    <link rel="stylesheet" href="calendarioestilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+</head>
+
+<body>
+    <div class="contenedor">
+        <div class="row">
+            <div class="calendario">
+                <div class="cabecera-superior">
+                    <div class="titulo">Calendario</div>
+                    <div class="botones">
+                        <!-- today -->
+                        <div class="boton-hoy">
+                            Hoy
+                        </div>
+                    </div>
+                </div>
+                <div class="cabecera">
+                    <!-- previous month -->
+                    <div class="botones">
+                        <div class="boton anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                    </div>
+                    <div class="mes1">Julio 2021</div>
+                    <div class="mes2">Julio 2021</div>
+                    <div class="botones">
+                        <!-- next month -->
+                        <div class="boton siguiente">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="calendarios">
+                    <div class="calendario1">
+
+                        <div class="semana">
+                            <div class="dia-semana">L</div>
+                            <div class="dia-semana">M</div>
+                            <div class="dia-semana">X</div>
+                            <div class="dia-semana">J</div>
+                            <div class="dia-semana">V</div>
+                            <div class="dia-semana">S</div>
+                            <div class="dia-semana">D</div>
+                        </div>
+                        <div class="dias">
+                            <!-- render days with js -->
+                        </div>
+                    </div>
+
+                    <div class="calendario2">
+
+                        <div class="semana2">
+                            <div class="dia-semana">L</div>
+                            <div class="dia-semana">M</div>
+                            <div class="dia-semana">X</div>
+                            <div class="dia-semana">J</div>
+                            <div class="dia-semana">V</div>
+                            <div class="dia-semana">S</div>
+                            <div class="dia-semana">D</div>
+                        </div>
+                        <div class="dias2">
+                            <!-- render days with js -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bloque Formulario-->
+            <div class="formulario" id="formulario">
+                <div class="cabecera-superior">
+                    <div class="titulo">Añadir un periodo</div>
+                </div>
+
+                <div class="periodo">
+                    <div class="campo">
+                        <label for="Inicio">Inicio</label>
+                        <input type="text" id="FechaInicio" placeholder="Fecha de recogida" >
+                    </div>
+                    <div class="campo">
+                        <label for="Fin">Fin</label>
+                        <input type="text" id="FechaFin"  placeholder="Fecha de entrega" readonly >
+                    </div>
+                </div>
+
+
+                <!-- Boton Reservar -->
+                <div class="botones">
+                    <div class="boton reservar">
+                        Reservar
+                    </div>
+                    <div class="boton-limpiar" id="cancelar">
+                        Cancelar
+                    </div>
+                </div>
+
+                <div class="simbolos">
+                    <div class="disponible">
+                        <div class="icono">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="texto">
+                            Disponible
+                        </div>
+                    </div>
+                    <div class="no-disponible">
+                        <div class="icono">
+                            <i class="fas fa-calendar-times"></i>
+                        </div>
+                        <div class="texto">
+                            No disponible
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Importar el archivo JavaScript -->
+    <script src="calendario.js"></script>
+
+
+</body>
+
+</html>
